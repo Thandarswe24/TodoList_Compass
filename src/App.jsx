@@ -11,18 +11,6 @@ const todoLists =[
     id : 2,
     task: "Reading",
   },
-  {
-    id : 3,
-    task: "Writing",
-  },
-  {
-    id :4,
-    task: "Reviewing",
-  },
-  {
-    id : 5,
-    task: "Testing",
-  },
 ];
 
  const App = () => {
@@ -33,9 +21,15 @@ const todoLists =[
    const  [todoEditValue, setTodoEditValue] = useState(null);
 
 
-   const  handelSubmit=  () => {
-    console.log(todoList, todoInput);
-    setTodoList([...todoList, {id: ++todoList.length, task:todoInput}]);
+   const  handelSubmit=  (e) => {
+    e.preventDefault();
+   setTodoList([...todoList, {id: ++todoList.length, task:todoInput}]);
+   setTimeout(() => {
+    alert("Success!");
+   }, 1000);
+  
+   console.log(todoList, todoInput);
+    ;
    }
 
     const handelDelete  =(d)=> {
@@ -51,12 +45,12 @@ const todoLists =[
    }
 
    const handleEditSubmit = (d) => {
-    let editA = todoList.map((todo) =>
-      todo.id === d ? { id: d, task: todoEditValue } : todo
+    let editV = todoList.map((t) =>
+      t.id === d ? { id: d, task: todoEditValue } : t
     ); 
-    console.log(editA);
+    console.log(editV);
 
-    setTodoList(editA);
+    setTodoList(editV);
 
     setTodoEdit(null);
   };
