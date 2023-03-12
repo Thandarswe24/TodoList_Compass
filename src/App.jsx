@@ -1,5 +1,5 @@
 import React, {useState}  from 'react'
-import '../src/App.css'
+
 import {FiXCircle, FiEdit3} from "react-icons/fi"
 
 const todoLists =[
@@ -27,6 +27,7 @@ const todoLists =[
 
  const App = () => {
    const [todoList, setTodoList] = useState(todoLists);
+
    const [todoInput,setTodoInput] = useState("");
    const  [todoEdit, setTodoEdit]  = useState(null);
    const  [todoEditValue, setTodoEditValue] = useState(null);
@@ -62,13 +63,23 @@ const todoLists =[
 
 
   return (
-    <div >
-      <div>
+    
+    <div  style={{
+                      width: "24rem",
+                      borderRadius: "10px",
+                      background:" #e5daff",
+                      padding: "2rem",
+                      display: "flex",
+                      flexDirection:" column",
+                      alignItems: "center",
+                      margin: "auto",}}>
+      <h1 style={{color: "green"}} >What's Your Plan Today?</h1>
+      <div >
         <input style={{    
-    width: "15rem",
-    border: "none",
-    borderRadius: "10px",
-    padding: "5px 6px",}}
+                      border: "none",
+                      borderRadius: "10px",
+                      padding: "10px",
+                      background: "#fbfbf7"}}
         type="text" 
         value={todoInput}
         onChange={
@@ -76,22 +87,27 @@ const todoLists =[
                   }
         placeholder='Make a to-do list' />{" "}
         <button style={{
-                backgroundColor: "royalblue",
-                border: "none",
-                borderRadius: "10px",
-                padding: "5px 6px",}}
+                        backgroundColor:" #add296",
+                        border: "none",
+                        fontWeight: "500",
+                        borderRadius:"10px",
+                        marginInlineStart: "5px",
+                        padding: "10px",}}
          onClick={handelSubmit} >Add Todo</button>
       </div>
 
       {todoList.map((r,i) => (
-        <div   key={i} >
+        <div  style={{  
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",}} key={i} >
           { r.id === todoEdit ? 
-            (<div style={{marginTop: "10px"}}>
-              <input style={{    
-                width: "15rem",
-                border: "none",
-                borderRadius: "10px",
-                padding: "5px 6px",}}
+            (<div style={{  
+                          display: "flex",  marginTop: "10px"}}>
+              <input  style={{    
+                          border: "none",
+                          borderRadius: "10px",
+                          padding: "10px",}}
               type="text" 
               value={todoEditValue}
               onChange={
@@ -99,12 +115,19 @@ const todoLists =[
                 }}
               />{" "}
               <button style={{
-                backgroundColor: "royalblue",
-                border: "none",
-                borderRadius: "10px",
-                padding: "5px 6px",}}
+                            backgroundColor:" #96a4d2",
+                            border: "none",
+                            fontWeight: "500",
+                            borderRadius:"10px",
+                            marginInlineStart: "5px",
+                            padding: "10px",}}
               onClick={()=>handleEditSubmit(r.id)} >Edit ToDo</button>
-              <FiXCircle style={{ marginLeft: "10px", color: "red" }}
+              <FiXCircle style={{ 
+                            color:" red",
+                            background: "whitesmoke",
+                            marginLeft:" 10px",
+                            padding: "10px",
+                            borderRadius: "10px",  }}
               onClick={ ()=> setTodoEdit(null) } ></FiXCircle>
             </div>
             )
@@ -114,9 +137,19 @@ const todoLists =[
           
           {r.id !== todoEdit && (
             <>
-            < FiXCircle style={{ marginLeft: "10px", color: "red"  }}
+            < FiXCircle style={{
+                            color:" red",
+                            background: "whitesmoke",
+                            marginLeft:" 10px",
+                            padding: "10px",
+                            borderRadius: "10px",  }}
             onClick={()=> handelDelete(r.id) }/>
-            <FiEdit3   style={{ marginLeft: "5px", color: "green" }}
+            <FiEdit3   style={{
+                            color:" green",
+                            background: "#ebf77b ",
+                            marginLeft:" 10px",
+                            padding: "10px",
+                            borderRadius: "10px",   }}
             onClick={()=> handelEdit(r)}/>
             </>
           )}
